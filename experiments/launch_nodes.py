@@ -12,8 +12,8 @@ class Args:
     robot: str = "ur"
     robot_port: int = 6001
     hostname: str = "127.0.0.1"
-    robot_ip: str = "10.42.0.162"
-    left_robot_ip: str = "10.42.0.163"
+    robot_ip: str = "10.42.0.163"
+    # left_robot_ip: str = "10.42.0.163"
 
 
 
@@ -83,6 +83,7 @@ def launch_robot_server(args: Args):
             raise NotImplementedError(
                 f"Robot {args.robot} not implemented, choose one of: sim_ur, xarm, ur, bimanual_ur, none"
             )
+        
         server = ZMQServerRobot(robot, port=port, host=args.hostname)
         print(f"Starting robot server on port {port}")
         server.serve()

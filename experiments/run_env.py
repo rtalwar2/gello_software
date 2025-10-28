@@ -53,7 +53,7 @@ def main(args):
         camera_clients = {
             # you can optionally add camera nodes here for imitation learning purposes
            # "left-wrist": ZMQClientCamera(port=args.wrist_camera_port, host=args.hostname),
-            "right-wrist": ZMQClientCamera(port=5001, host=args.hostname),
+            # "right-wrist": ZMQClientCamera(port=5001, host=args.hostname),
            # "base": ZMQClientCamera(port=args.base_camera_port, host=args.hostname),
         }
         #camera_clients  ={}
@@ -128,13 +128,13 @@ def main(args):
                         "No gello port found, please specify one or plug in gello"
                     )
             if args.start_joints is None:
-                reset_joints = np.deg2rad(
-                    [0, -90, 90, -90, -90, 0, 0]
-                )  # Change this to your own reset joints
+                # reset_joints = np.deg2rad(
+                #     [-90,-90,-90,-90,-90,90]
+                # )  # Change this to your own reset joints
                 # reset_joints = np.deg2rad([-90, -90, -90, -90, 90, 0, 0]) # left robot as single arm atm
 
-                reset_joints = np.deg2rad([-90, -90, -90, -90, 90, 90, 0]) # right ar, reset joints
-
+                # reset_joints = np.deg2rad([-90, -90, -90, -90, 90, 90, 0]) # right ar, reset joints
+                reset_joints = np.array([ 1.21642685 ,-1.55085212 , 1.55082685 ,-3.23978057, -1.41435892 ,-3.26430661,0.01176471])
 
                 if args.no_gripper:
                     reset_joints = reset_joints[:-1]
